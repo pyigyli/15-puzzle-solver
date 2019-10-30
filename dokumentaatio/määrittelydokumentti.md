@@ -1,0 +1,9 @@
+# Määrittelydokumentti
+
+Valitsin ratkaistavaksi ongelmaksi 15-pelin ratkaisemisen. Peli vaikutti sopivan haastavalta, vaikka aluksi mielenkiintoni oli Q-oppimista käyttävässä ratkaisutavassa. Tämä osoittautui kuitenkin haastavammaksi, koska pelin tilavaativuus olisi Q-oppimisessa liian suuri. Mielenkiintoni oli yhä korkealla kun käännyin googlen puoleen ja löysin muutamia mahdollisia ratkaisualgoritmeja pelin ratkaisemiseksi.
+
+Tavoitteena on ainakin kehittää toimiva Iterative Deepening Depth-First Search -algoritmi, joka on ilmeisesti löytämistäni eri vaihtoehdoista nopein. Sen aikavaatimus on O(b^d^), jossa b on haarautumiskerroin ja d maalitilan etäisyys. 15-pelissä haarautumiskerroin on keskimäärin 3 ja maalitilan etäisyys vaihtelee 0 ja 80 siirron välillä. Tällöin aikavaatimus on välillä 0-3^80^. En ole vielä tutkinut aihetta tarkemmin, mutta tämän algoritmin käyttö näyttää ensisilmäyksellä lupaavalta. IDDFS-algoritmin tilavaativuus on O(d), jossa d on maalitilan etäisyys. Mikäli olen hyvin nopea, saatan käyttää myös muita algoritmeja ja suorittaa vertailua näiden välillä.
+
+Ajattelin luoda yksinkertaisen graafisen käyttöliittymän ja visualisoida algoritmin toiminnat. Tietorakenteena käytän todennäköisesti hakupuuta tai ainakin jotain samantyylistä rakennetta. Syötteenä ohjelma saa pelin alkutilan, josta aloittaen se pystyy seulomaan eri ratkaisumahdollisuuksia.
+
+Iterative Deepening Depth-First Search -algoritmin lähteenä käytän ensisijaisesti wikipedian pseudokoodia algoritmista ja tietorakenteet ja algoritmit kurssin viikottaisten tehtävien ratkaisujni. Tarvittaessa haen tietoa muualta netistä.

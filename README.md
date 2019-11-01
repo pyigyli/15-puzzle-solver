@@ -1,2 +1,6 @@
-# 15-puzzle-solver
-School project for course Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit in University of Helsinki
+# 15-pelin ratkaisija
+
+## Dokumentaatio:
+- [Määrittelydokumentti](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/määrittelydokumentti.md)
+- [Viikkoraportit](https://github.com/pyigyli/15-puzzle-solver/tree/master/dokumentaatio/viikkoraportit):
+  - [Viikkoraportti 1](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-1.md)

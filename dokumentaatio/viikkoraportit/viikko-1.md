@@ -10,5 +10,10 @@ Loin alustavan sovelluspohjan projektilleni, joka sisältää pari nappia ja vis
 Käytetty aika torstaina: 1 tunti
 
 ---
-Käytetty aika yhteensä viikon aikana: 3,5
+Perjantaina laitoin linkit readme-sivulle ja edistin sovellusta jonkin verran lisää.
+
+Käytetty aika perjantaina: 1 tunti
+
+---
+Käytetty aika yhteensä viikon aikana: 4,5
 -

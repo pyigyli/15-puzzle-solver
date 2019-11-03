@@ -5,6 +5,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+* Class that handles the visual representation of the game board.
+*/
 public class GameCanvas {
 
   private final int width;
@@ -13,6 +16,9 @@ public class GameCanvas {
   private final GraphicsContext gc;
   private BoardPiece[] gameBoard;
 
+  /**
+  * Create a new Canvas object to draw the game board and pieces into.
+  */
   public GameCanvas() {
     this.width = 830;
     this.height = 830;
@@ -35,6 +41,11 @@ public class GameCanvas {
     }
   }
 
+  /**
+  * Draws the game board on the screen.
+  * Any updates to the parameters of this class won't
+  * show on the screen until calling this function.
+  */
   public void drawBoard() {
     // Draw white background
     this.gc.setFill(Color.LIGHTGRAY);
@@ -75,6 +86,13 @@ public class GameCanvas {
     return this.gameBoard;
   }
   
+  /**
+  * Finds the BoardPiece object by the number of the piece.
+  *
+  * @param  number  the number of the piece to look for
+  * 
+  * @return The BoardPiece object that corresponds to the parameter.
+  */
   public BoardPiece getPieceByNumber(int number) {
     return this.gameBoard[number - 1];
   }

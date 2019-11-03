@@ -1,5 +1,8 @@
 package application;
 
+/**
+* Class that handles the visual representation of a piece of the game board.
+*/
 public class BoardPiece {
     
   private final int size;
@@ -10,6 +13,13 @@ public class BoardPiece {
   private final int numberOffsetX; // Offset number to place it
   private final int numberOffsetY; // in the middle of the piece
 
+  /**
+  * Create a new board piece with number in the middle.
+  *
+  * @param    x       selected x-coordinate
+  * @param    y       selected z-coordinate
+  * @param    number  the number of the piece
+  */
   public BoardPiece(int x, int y, int number) {
     this.size = 200;
     this.x = x;

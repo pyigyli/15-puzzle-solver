@@ -10,5 +10,15 @@ Yritin löytää tapoja luoda unit-testejä sovelluksen visuaalisille elementeil
 Käytetty aika maanantaina: 3 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 6
+Kehitin jonkin aikaa IDDFS-algoritmia, jonka jälkeen löysin kurssin ohjaajan jättämän palautteen ensimmäisen viikon palautuksesta ja aloin tutkimaan A* algoritmia.
+
+Käytetty aika tiistaina: 3 tuntia
+
+---
+Toteutin A* algoritmin. Tällä hetkellä käytän heuristiikan arvioimiseen solmun syvyyttä, Manhattan etäisyyttä ja Hammington etäisyyttä. Kokeilin myös lineaarikonfliktien löytämistä, mutta tämä ei näyttänyt tekevän algoritmista yhtään sen nopeampaa. Dokumentaatio, testit ja funktioiden luettavuuden optimointi jäivät tänään täysin huomioimatta, joten niitä pitää korjata myöhemmin.
+
+Käytetty aika keskiviikkona: 8 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 18
 -

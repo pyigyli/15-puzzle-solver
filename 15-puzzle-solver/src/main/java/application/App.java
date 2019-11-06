@@ -1,6 +1,11 @@
 package application;
 
-import algorithm.IDDFS;
+import algorithm.AStar;
+import algorithm.Node;
+import java.util.ArrayDeque;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,7 +25,7 @@ public class App extends Application {
     final int screenHeight = 900;
 
     // Iterative deepening depth-first search
-    IDDFS iddfs = new IDDFS();
+    AStar aStar = new AStar();
 
     // Canvas element
     GameCanvas canvas = new GameCanvas();
@@ -37,10 +42,10 @@ public class App extends Application {
     
     // Shuffle button
     shuffleButton.setOnAction((event) -> {
-      iddfs.shuffleBoard();
+      aStar.shuffleBoard();
       for (int x = 0; x < 4; x++) {
         for (int y = 0; y < 4; y++) {
-          int number = iddfs.getPieceNumber(x, y);
+          int number = aStar.getPieceNumber(x, y);
           if (number != 16) { // Ignore empty piece
             BoardPiece piece = canvas.getPieceByNumber(number);
             piece.setX(x * (canvas.getWidth() - 30) / 4 + (x * 10));
@@ -53,7 +58,28 @@ public class App extends Application {
     
     // Solve Button
     solveButton.setOnAction((event) -> {
-      
+      long startTime = System.nanoTime();
+      Node node = aStar.findSolution();
+      long elapsedTime = System.nanoTime() - startTime;
+      System.out.println("solved in " + elapsedTime / 1_000_000_000 + " seconds.");
+      ArrayDeque<Node> solutionNodes = new ArrayDeque<>();
+      while (node.getParent() != null) {
+        solutionNodes.add(node);
+        node = node.getParent();
+      }
+      while (!solutionNodes.isEmpty()) {
+        node = solutionNodes.removeLast();
+        for (int x = 0; x < 4; x++) {
+          for (int y = 0; y < 4; y++) {
+            if (node.getBoard()[x][y] != 16) {
+              BoardPiece piece = canvas.getPieceByNumber(node.getBoard()[x][y]);
+              piece.setX(x * 200 + (x * 10));
+              piece.setY(y * 200 + (y * 10));
+              canvas.drawBoard();
+            }
+          }
+        }
+      }
     });
 
     // Compose full scene

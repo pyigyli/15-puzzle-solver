@@ -20,5 +20,15 @@ Toteutin A* algoritmin. Tällä hetkellä käytän heuristiikan arvioimiseen sol
 Käytetty aika keskiviikkona: 8 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 18
+Viimeiset bugikorjaukset A* algoritmin kanssa, jonka jälkeen kulutin ihan liian kauan aikaa javaFX-härveleiden kanssa. Halusin kovasti visuaalista toteutusta sille, kun algoritmi löytää 15-pelin ratkaisun ja liikuttaa palat yksitellen nopeasti paikalleen. Oli myöhä, joten menin nukkumaan.
+
+Käytetty aika torstaina: 7 tuntia
+
+---
+Toteutin tekstipohjaisen konsolosovelluksen ja parantelin koodin luettavuutta, lisäsin javadocsit ja sain kaikki unit-testit kuntoon. Checkstylet on hoidettu ja A* algoritmi toimii järkyttävän nopeasti.
+
+Käytetty aika perjantaina: 6 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 31
 -

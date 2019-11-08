@@ -28,7 +28,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>application/**/*</exclude>
+                        <exclude>application/App.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>

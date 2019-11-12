@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Random;
+import lists.LinkedPriorityList;
 
 /**
  * This class contains the logic for the board of the
@@ -84,10 +85,10 @@ public class Board {
    */
   public Node aStar() {
     ArrayList<int[][]> closedList = new ArrayList<>(); // Visited nodes
-    PriorityQueue<Node> openList = new PriorityQueue<>(); // To be visited nodes
+    LinkedPriorityList openList = new LinkedPriorityList();
     openList.add(new Node(this.gameBoard, null)); // Add root node
     while (!openList.isEmpty()) {
-      Node current = openList.remove();
+      Node current = openList.pollFirst();
       if (current.isSolved()) {
         return current;
       }

@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayDeque;
 import java.util.Scanner;
+import lists.LinkedPriorityList;
 
 public class App {
 
@@ -32,7 +33,7 @@ public class App {
       while (!solutionNodes.isEmpty()) {
         node = solutionNodes.removeLast();
         System.out.println(node.toString());
-        Thread.sleep(200);
+        Thread.sleep(300);
       }
     }
   }

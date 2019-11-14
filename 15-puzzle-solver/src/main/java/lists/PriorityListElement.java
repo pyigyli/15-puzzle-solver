@@ -5,17 +5,17 @@ import application.Node;
 /**
  * This class is used in LinkedPriorityList.
  */
-public class NodeElement {
+public class PriorityListElement {
   
   private final Node node;
-  private NodeElement next;
+  private PriorityListElement next;
   
   /**
    * Create a new node that is not associated with the rest of the list yet.
    * 
    * @param node  The Node object we want to store in the list.
    */
-  public NodeElement(Node node) {
+  public PriorityListElement(Node node) {
     this.node = node;
     this.next = null;
   }
@@ -44,7 +44,7 @@ public class NodeElement {
    * 
    * @param element The new child of this element.
    */
-  public void setNext(NodeElement element) {
+  public void setNext(PriorityListElement element) {
     this.next = element;
   }
   
@@ -53,7 +53,7 @@ public class NodeElement {
    * 
    * @return  The next node in the list this element is contained in.
    */
-  public NodeElement getNext() {
+  public PriorityListElement getNext() {
     return this.next;
   }
 }

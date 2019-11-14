@@ -24,6 +24,12 @@ public class LinkedPriorityListTest {
   }
 
   @Test
+  public void testPollFirstOnEmptyList() {
+    LinkedPriorityList list = new LinkedPriorityList();
+    assertEquals(null, list.pollFirst());
+  }
+
+  @Test
   public void testIsEmpty() {
     LinkedPriorityList list = new LinkedPriorityList();
     assertEquals(true, list.isEmpty());

@@ -5,5 +5,10 @@ Otin A* algoritmini käyttämän PriorityQueue objectin ja korvasin sen itse luo
 Käytetty aika tiistaina: 4 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 4
+Lisäsin myös suljetulle listalle itse rakentamani tietorakenteen. En ole varma mitä tiistaina luomalle rakenteelle tapahtui, mutta pelin ratkaisu on nyt erittäin nopea. Pahimmassa tapauksessa ratkaisu on kestänyt kaksi sekunttia, mutta yli 95 % on reilusti alle sekunnin aikaluokkaa. Toteutin myös testit, dokumentoinnin ja varmistin checkstylen. Hieman hämmentynyt, mutta tyytyväinen tähän ratkaisunopeuteen.
+
+Käytetty aika torstaina: 2 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 6
 -

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Random;
+import lists.ArrayListElement;
+import lists.LinkedArrayList;
 import lists.LinkedPriorityList;
 
 /**
@@ -84,7 +86,7 @@ public class Board {
    * @return  The final node of the path of nodes the solution took.
    */
   public Node aStar() {
-    ArrayList<int[][]> closedList = new ArrayList<>(); // Visited nodes
+    LinkedArrayList closedList = new LinkedArrayList(); // Visited nodes
     LinkedPriorityList openList = new LinkedPriorityList();
     openList.add(new Node(this.gameBoard, null)); // Add root node
     while (!openList.isEmpty()) {
@@ -97,10 +99,13 @@ public class Board {
       for (Node child: current.getChildren()) {
         if (child != null) {
           boolean newLayout = true;
-          for (int[][] layout: closedList) { // Make sure child node isn't already checked layout
-            if (Arrays.deepEquals(layout, child.getBoard())) {
+          ArrayListElement element = closedList.getHead();
+          while (element != null) { // Make sure child node isn't already checked layout
+            if (Arrays.deepEquals(element.getBoard(), child.getBoard())) {
               newLayout = false;
+              break;
             }
+            element = element.getNext();
           }
           if (newLayout) { // Add to open list if new unchecked board layout
             openList.add(child);

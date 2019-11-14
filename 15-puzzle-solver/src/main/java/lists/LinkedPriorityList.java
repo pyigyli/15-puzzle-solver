@@ -7,7 +7,7 @@ import application.Node;
  */
 public class LinkedPriorityList {
   
-  private NodeElement head;
+  private PriorityListElement head;
   
   /**
    * Initialize a new LinkedPriorityList.
@@ -23,12 +23,12 @@ public class LinkedPriorityList {
    * @param node  The node that will be added.
    */
   public void add(Node node) {
-    NodeElement newElement = new NodeElement(node);
+    PriorityListElement newElement = new PriorityListElement(node);
     if (this.head == null) {
       this.head = newElement;
       return;
     }
-    NodeElement element = this.head;
+    PriorityListElement element = this.head;
     while (element.getHeuristicValue() < newElement.getHeuristicValue()) {
       if (element.getNext() == null) {
         element.setNext(newElement);
@@ -49,10 +49,11 @@ public class LinkedPriorityList {
    * @return  The first element of the list.
    */
   public Node pollFirst() {
-    NodeElement element = this.head;
-    if (this.head != null) {
-      this.head = this.head.getNext();
+    PriorityListElement element = this.head;
+    if (this.head == null) {
+      return null;
     }
+    this.head = this.head.getNext();
     return element.getNode();
   }
   

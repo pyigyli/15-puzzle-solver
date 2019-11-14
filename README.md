@@ -17,16 +17,20 @@ Yksittäin ajettuna kaikki komentorivikomennot suoritetaan Java-projektin kansio
 Testit suoritetaan komennolla `mvn test`.
 
 Testikattavuusraportti luodaan komennolla `mvn jacoco:report`.
+
 Testikattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*.
 
 ### Suoritettava jar-tiedosto
 Suoritettavan jar-tiedoston voi luoda komennolla `mvn package`.
+
 Luodun tiedoston polku on *target/15-puzzle-solver-1.0-SNAPSHOT*.
+
 Sovellus vaatii konsolia tekstin esittämiseen, joten IDE:n
 käyttäminen ohjelman suorittamiseen voi olla helpompi vaihtoehto.
 
 ### JavaDoc
 JavaDoc generoidaan komennolla `mvn javadoc:javadoc`.
+
 JavaDocia voi tarkastella avaamalla tiedosto *target/site/apidocs/index.html*.
 
 ### Checkstyle

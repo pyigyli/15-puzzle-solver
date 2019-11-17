@@ -4,7 +4,7 @@ package application;
  * Nodes are used in search algorithms that find the solution to solve
  * the 15-puzzle game. One node represent one layout of the game board.
  */
-public class Node implements Comparable<Node> {
+public class Node {
   
   private final int[][] boardLayout;
   private final Node parent;
@@ -59,7 +59,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  A new child node for this piece.
    */
-  public Node makeChild(int x, int y, int swapX, int swapY) {
+  private Node makeChild(int x, int y, int swapX, int swapY) {
     if (swapX < 0 || swapY < 0 || swapX > 3 || swapY > 3) {
       return null;
     }
@@ -74,7 +74,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  Two dimensional array identical to this.boardLayout.
    */
-  public int[][] copyBoard() {
+  private int[][] copyBoard() {
     int[][] newBoard = new int[4][4];
     for (int x = 0; x < 4; x++) {
       for (int y = 0; y < 4; y++) {
@@ -91,7 +91,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  The number of pieces in the correct places on the board.
    */
-  public int getManhattanDistance() {
+  private int getManhattanDistance() {
     int manhattanDistance = 0;
     for (int piece = 1; piece < 16; piece++) { // Don't include empty piece
       for (int x = 0; x < 4; x++) {
@@ -115,7 +115,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  The amount of lines that contain linear conflicts in the board.
    */
-  public int getLinearConflictCount() {
+  private int getLinearConflictCount() {
     int linearConflicts = 0;
     int[][] targetBoard = new int[][] {{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
     for (int x = 0; x < 4; x++) { // Checks every row for conflicts
@@ -148,7 +148,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  Boolean value that tells if line has a linear conflict.
    */
-  public boolean hasLinearConflict(int[] line, int[] targetLine) {
+  private boolean hasLinearConflict(int[] line, int[] targetLine) {
     boolean smallPieceFoundAfterBigTarget = false;
     boolean bigPieceFoundBeforeSmallTarget = false;
     for (int i = 0; i < 4; i++) {
@@ -183,51 +183,6 @@ public class Node implements Comparable<Node> {
       }
     }
     return solved;
-  }
-  
-  /**
-   * Comparison based first on the heuristic value, then
-   * ties are broken by comparing depth of the node.
-   * 
-   * @param   other The node to compare to.
-   * 
-   * @return  Integer based on the result of the comparison.
-   */
-  @Override
-  public int compareTo(Node other) {
-    if (this.getHeuristicValue() < other.getHeuristicValue()) {
-      return -1;
-    } else if (this.getHeuristicValue() > other.getHeuristicValue()) {
-      return 1;
-    } else if (this.getDepth() < other.getDepth()) {
-      return -1;
-    } else if (this.getDepth() > other.getDepth()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  /**
-   * Check if nodes a and b have the same board layout.
-   * 
-   * @param   a Node to compare.
-   * @param   b Node to compare.
-   * 
-   * @return  Boolean that indicates wheter or
-   *          not the boards have the same layout.
-   */
-  public boolean hasSameBoard(Node a, Node b) {
-    if (a == null || b == null) {
-      return false;
-    }
-    for (int x = 0; x < 4; x++) {
-      for (int y = 0; y < 4; y++) {
-        if (a.getBoard()[x][y] != b.getBoard()[x][y]) {
-          return false;
-        }
-      }
-    }
-    return true;
   }
   
   /**
@@ -274,7 +229,7 @@ public class Node implements Comparable<Node> {
    * 
    * @return  The heuristic value of the node.
    */
-  public int getHeuristicValue() {
+  public int getHValue() {
     return this.heuristicValue;
   }
   

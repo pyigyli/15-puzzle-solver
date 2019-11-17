@@ -3,19 +3,19 @@ package lists;
 import application.Node;
 
 /**
- * This class is used in LinkedPriorityList.
+ * This class is used in NodeList.
  */
-public class PriorityListElement {
+public class NodeListElement {
   
   private final Node node;
-  private PriorityListElement next;
+  private NodeListElement next;
   
   /**
    * Create a new node that is not associated with the rest of the list yet.
    * 
    * @param node  The Node object we want to store in the list.
    */
-  public PriorityListElement(Node node) {
+  public NodeListElement(Node node) {
     this.node = node;
     this.next = null;
   }
@@ -34,8 +34,8 @@ public class PriorityListElement {
    * 
    * @return  The heuristic value of the node.
    */
-  public int getHeuristicValue() {
-    return this.node.getHeuristicValue();
+  public int getHValue() {
+    return this.node.getHValue();
   }
   
   /**
@@ -44,7 +44,7 @@ public class PriorityListElement {
    * 
    * @param element The new child of this element.
    */
-  public void setNext(PriorityListElement element) {
+  public void setNext(NodeListElement element) {
     this.next = element;
   }
   
@@ -53,7 +53,7 @@ public class PriorityListElement {
    * 
    * @return  The next node in the list this element is contained in.
    */
-  public PriorityListElement getNext() {
+  public NodeListElement getNext() {
     return this.next;
   }
 }

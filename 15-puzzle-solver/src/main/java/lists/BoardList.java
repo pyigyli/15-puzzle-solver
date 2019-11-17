@@ -3,15 +3,15 @@ package lists;
 /**
  * Class used as closed list for the A* algorithm.
  */
-public class LinkedArrayList {
+public class BoardList {
   
-  private ArrayListElement head;
-  private ArrayListElement tail;
+  private BoardListElement head;
+  private BoardListElement tail;
   
   /**
-   * Initialize a new LinkedArrayList.
+   * Initialize a new BoardList.
    */
-  public LinkedArrayList() {
+  public BoardList() {
     this.head = null;
     this.tail = null;
   }
@@ -22,14 +22,13 @@ public class LinkedArrayList {
    * @param board The game board that will be added.
    */
   public void add(int[][] board) {
-    ArrayListElement newElement = new ArrayListElement(board);
+    BoardListElement newElement = new BoardListElement(board);
     if (this.head == null) {
       this.head = newElement;
-      this.tail = newElement;
     } else {
       this.tail.setNext(newElement);
-      this.tail = newElement;
     }
+    this.tail = newElement;
   }
   
   /**
@@ -38,7 +37,7 @@ public class LinkedArrayList {
    * 
    * @return  The first element of the list.
    */
-  public ArrayListElement getHead() {
+  public BoardListElement getHead() {
     return this.head;
   }
 }

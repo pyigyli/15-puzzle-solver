@@ -1,12 +1,10 @@
 package application;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.PriorityQueue;
 import java.util.Random;
-import lists.ArrayListElement;
-import lists.LinkedArrayList;
-import lists.LinkedPriorityList;
+import lists.BoardListElement;
+import lists.BoardList;
+import lists.Heap;
 
 /**
  * This class contains the logic for the board of the
@@ -86,10 +84,10 @@ public class Board {
    * @return  The final node of the path of nodes the solution took.
    */
   public Node aStar() {
-    LinkedArrayList closedList = new LinkedArrayList(); // Visited nodes
-    LinkedPriorityList openList = new LinkedPriorityList();
+    BoardList closedList = new BoardList(); // Visited nodes
+    Heap openList = new Heap();
     openList.add(new Node(this.gameBoard, null)); // Add root node
-    while (!openList.isEmpty()) {
+    while (true) {
       Node current = openList.pollFirst();
       if (current.isSolved()) {
         return current;
@@ -99,7 +97,7 @@ public class Board {
       for (Node child: current.getChildren()) {
         if (child != null) {
           boolean newLayout = true;
-          ArrayListElement element = closedList.getHead();
+          BoardListElement element = closedList.getHead();
           while (element != null) { // Make sure child node isn't already checked layout
             if (Arrays.deepEquals(element.getBoard(), child.getBoard())) {
               newLayout = false;
@@ -113,7 +111,6 @@ public class Board {
         }
       }
     }
-    return null; // Should never be reached
   }
   
   /**

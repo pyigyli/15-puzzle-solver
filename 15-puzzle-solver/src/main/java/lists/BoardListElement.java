@@ -1,19 +1,19 @@
 package lists;
 
 /**
- * This class is used in LinkedArrayList.
+ * This class is used in BoardList.
  */
-public class ArrayListElement {
+public class BoardListElement {
   
   private final int[][] board;
-  private ArrayListElement next;
+  private BoardListElement next;
   
   /**
    * Create a new node that is not associated with the rest of the list yet.
    * 
    * @param board  The game board we want to store in the list.
    */
-  public ArrayListElement(int[][] board) {
+  public BoardListElement(int[][] board) {
     this.board = board;
     this.next = null;
   }
@@ -33,7 +33,7 @@ public class ArrayListElement {
    * 
    * @param element The new child of this element.
    */
-  public void setNext(ArrayListElement element) {
+  public void setNext(BoardListElement element) {
     this.next = element;
   }
   
@@ -42,7 +42,7 @@ public class ArrayListElement {
    * 
    * @return  The next node in the list this element is contained in.
    */
-  public ArrayListElement getNext() {
+  public BoardListElement getNext() {
     return this.next;
   }
 }

@@ -38,7 +38,7 @@ public class BoardTest {
     assertEquals(14, board.getInversionCount());
   }
 
-  @Test(timeout=5000)
+  @Test(timeout=10000)
   public void testAStar() {
     Board board = new Board();
     board.shuffleBoard();

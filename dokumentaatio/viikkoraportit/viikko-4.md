@@ -5,5 +5,10 @@ Loin Heap tietorakenteen, jolla korvasin edellisen toteutukseni. Tämän tietora
 Käytetty aika sunnuntaina: 6 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 6
+Loin toteutusdokumentin.
+
+Käytetty aika tiistaina: 1,5 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 7,5
 -

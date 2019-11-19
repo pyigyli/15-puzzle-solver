@@ -1,6 +1,6 @@
 package lists;
 
-import application.Node;
+import gameboard.Node;
 
 /**
  * Class used to iterate through the solution nodes.

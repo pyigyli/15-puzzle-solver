@@ -1,4 +1,4 @@
-package application;
+package gameboard;
 
 import java.util.Arrays;
 import org.junit.Test;

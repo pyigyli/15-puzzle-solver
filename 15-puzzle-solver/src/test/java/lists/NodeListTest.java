@@ -1,6 +1,6 @@
 package lists;
 
-import application.Node;
+import gameboard.Node;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

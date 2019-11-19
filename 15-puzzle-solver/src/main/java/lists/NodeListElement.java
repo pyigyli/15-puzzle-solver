@@ -1,6 +1,6 @@
 package lists;
 
-import application.Node;
+import gameboard.Node;
 
 /**
  * This class is used in NodeList.

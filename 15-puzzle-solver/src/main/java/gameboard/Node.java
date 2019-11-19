@@ -1,4 +1,4 @@
-package application;
+package gameboard;
 
 /**
  * Nodes are used in search algorithms that find the solution to solve

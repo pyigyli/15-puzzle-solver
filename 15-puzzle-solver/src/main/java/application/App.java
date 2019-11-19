@@ -1,5 +1,7 @@
 package application;
 
+import gameboard.Board;
+import gameboard.Node;
 import java.util.Scanner;
 import lists.NodeList;
 
@@ -63,7 +65,7 @@ public class App {
     double minSolveDepthTime = 0;
     double maxSolveDepthTime = 0;
     
-      System.out.println("Solving...");
+    System.out.println("Solving...");
     for (int solveCount = 1; solveCount <= solveAmount; solveCount++) {
       board.shuffleBoard();
       

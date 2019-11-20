@@ -10,5 +10,10 @@ Loin toteutusdokumentin.
 Käytetty aika tiistaina: 1,5 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 7,5
+Loin testausdokumentin.
+
+Käytetty aika tiistaina: 1 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 8,5
 -

@@ -21,7 +21,7 @@ public class BoardTest {
           break;
         }
         if (i == 16) {
-          fail(("Number " + number + " not found after shuffling the board."));
+          fail("Number " + number + " not found after shuffling the board.");
         }
       }
     }

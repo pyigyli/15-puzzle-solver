@@ -24,6 +24,7 @@ public class App {
   static void singleSolve() throws InterruptedException {
     Board board = new Board();
     board.shuffleBoard();
+    int starterHeuristic = new Node(board.getGameBoard(), null).getHValue();
     System.out.println("\nStarting the puzzle with board\n" + board.toString());
 
     System.out.println("Solving...");
@@ -31,6 +32,7 @@ public class App {
     Node node = board.aStar();
     double elapsedTime = (System.nanoTime() - startTime) / 1_000_000_000;
 
+    System.out.println("Started with heuristic value of " + starterHeuristic);
     System.out.println("Solved in " + String.format("%.3f", elapsedTime) + " seconds.");
     System.out.println("Found solution has depth " + node.getDepth());
 
@@ -54,51 +56,81 @@ public class App {
   
   static void solveTests(int solveAmount) throws InterruptedException {
     Board board = new Board();
-    double minSolveTime = Double.MAX_VALUE;
-    double maxSolveTime = Double.MIN_VALUE;
-    double sumSolveTime = 0;
-    int minSolveTimeDepth = 0;
-    int maxSolveTimeDepth = 0;
-    int minSolveDepth = Integer.MAX_VALUE;
-    int maxSolveDepth = Integer.MIN_VALUE;
-    int sumSolveDepth = 0;
-    double minSolveDepthTime = 0;
-    double maxSolveDepthTime = 0;
+    double minTime = Double.MAX_VALUE;
+    double maxTime = 0;
+    double sumTime = 0;
+    int minTimeDepth = Integer.MAX_VALUE;
+    int maxTimeDepth = 0;
+    int minTimeHeuristic = Integer.MAX_VALUE;
+    int maxTimeHeuristic = 0;
+    int minDepth = Integer.MAX_VALUE;
+    int maxDepth = 0;
+    int sumDepth = 0;
+    double minDepthTime = Double.MAX_VALUE;
+    double maxDepthTime = 0;
+    int minDepthHeuristic = Integer.MAX_VALUE;
+    int maxDepthHeuristic = 0;
+    int minHeuristic = Integer.MAX_VALUE;
+    int maxHeuristic = 0;
+    int sumHeuristic = 0;
+    double minHeuristicTime = Double.MAX_VALUE;
+    double maxHeuristicTime = 0;
+    int minHeuristicDepth = Integer.MAX_VALUE;
+    int maxHeuristicDepth = 0;
     
     System.out.println("Solving...");
     for (int solveCount = 1; solveCount <= solveAmount; solveCount++) {
       board.shuffleBoard();
+      int starterHeuristic = new Node(board.getGameBoard(), null).getHValue();
       
       double startTime = System.nanoTime();
       Node node = board.aStar();
       double elapsedTime = (System.nanoTime() - startTime) / 1_000_000_000;
       
-      if (minSolveTime > elapsedTime) {
-        minSolveTime = elapsedTime;
-        minSolveTimeDepth = node.getDepth();
+      if (minTime > elapsedTime) {
+        minTime = elapsedTime;
+        minTimeDepth = node.getDepth();
+        minTimeHeuristic = starterHeuristic;
       }
-      if (maxSolveTime < elapsedTime) {
-        maxSolveTime = elapsedTime;
-        maxSolveTimeDepth = node.getDepth();
+      if (maxTime < elapsedTime) {
+        maxTime = elapsedTime;
+        maxTimeDepth = node.getDepth();
+        maxTimeHeuristic = starterHeuristic;
       }
-      sumSolveTime += elapsedTime;
-      if (minSolveDepth > node.getDepth()) {
-        minSolveDepth = node.getDepth();
-        minSolveDepthTime = elapsedTime;
+      if (minDepth > node.getDepth()) {
+        minDepth = node.getDepth();
+        minDepthTime = elapsedTime;
+        minDepthHeuristic = starterHeuristic;
       }
-      if (maxSolveDepth < node.getDepth()) {
-        maxSolveDepth = node.getDepth();
-        maxSolveDepthTime = elapsedTime;
+      if (maxDepth < node.getDepth()) {
+        maxDepth = node.getDepth();
+        maxDepthTime = elapsedTime;
+        maxDepthHeuristic = starterHeuristic;
       }
-      sumSolveDepth += node.getDepth();
+      if (minHeuristic > starterHeuristic) {
+        minHeuristic = starterHeuristic;
+        minHeuristicTime = elapsedTime;
+        minHeuristicDepth = node.getDepth();
+      }
+      if (maxHeuristic < starterHeuristic) {
+        maxHeuristic = starterHeuristic;
+        maxHeuristicTime = elapsedTime;
+        maxHeuristicDepth = node.getDepth();
+      }
+      sumTime += elapsedTime;
+      sumDepth += node.getDepth();
+      sumHeuristic += starterHeuristic;
     }
     System.out.println();
-    System.out.println("Minimum solve time:\t" + String.format("%.3f", minSolveTime) + "\twith depth:\t" + minSolveTimeDepth);
-    System.out.println("Maximum solve time:\t" + String.format("%.3f", maxSolveTime) + "\twith depth:\t" + maxSolveTimeDepth);
-    System.out.println("Average solve time:\t" + String.format("%.3f", (sumSolveTime / solveAmount)) + "\n");
-    System.out.println("Minimum solve depth:\t" + minSolveDepth + "\twith time:\t" + String.format("%.3f", minSolveDepthTime));
-    System.out.println("Maximum solve depth:\t" + maxSolveDepth + "\twith time:\t" + String.format("%.3f", maxSolveDepthTime));
-    System.out.println("Average solve depth:\t" + (sumSolveDepth / solveAmount));
-    System.out.println("\nTotal time taken:\t" + String.format("%.3f", sumSolveTime) + "\n");
+    System.out.println("Minimum solve time:\t" + String.format("%.3f", minTime) + " sec\twith solve depth:\t" + minTimeDepth + "\twith starter heuristic value:\t" + minTimeHeuristic);
+    System.out.println("Maximum solve time:\t" + String.format("%.3f", maxTime) + " sec\twith solve depth:\t" + maxTimeDepth + "\twith starter heuristic value:\t" + maxTimeHeuristic);
+    System.out.println("Average solve time:\t" + String.format("%.3f", (sumTime / solveAmount)) + " sec\n");
+    System.out.println("Minimum solve depth:\t" + minDepth + "\twith solve time:\t" + String.format("%.3f", minDepthTime) + " sec\twith starter heuristic value:\t" + minDepthHeuristic);
+    System.out.println("Maximum solve depth:\t" + maxDepth + "\twith solve time:\t" + String.format("%.3f", maxDepthTime) + " sec\twith starter heuristic value:\t" + maxDepthHeuristic);
+    System.out.println("Average solve depth:\t" + (sumDepth / solveAmount) + "\n");
+    System.out.println("Minimum starter heuristic:\t" + minHeuristic + "\twith solve time:\t" + String.format("%.3f", minHeuristicTime) + " sec\tand solve depth:\t" + minHeuristicDepth);
+    System.out.println("Maximum starter heuristic:\t" + maxHeuristic + "\twith solve time:\t" + String.format("%.3f", maxHeuristicTime) + " sec\tand solve depth:\t" + maxHeuristicDepth);
+    System.out.println("Average starter heuristic:\t" + (sumHeuristic / solveAmount) + "\n");
+    System.out.println("Total time taken to solve:\t" + String.format("%.3f", sumTime) + " sec\n");
   }
 }

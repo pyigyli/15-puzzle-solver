@@ -2,7 +2,7 @@ package gameboard;
 
 /**
  * Nodes are used in search algorithms that find the solution to solve
- * the 15-puzzle game. One node represent one layout of the game board.
+ * the 15-puzzle game. One node represents one layout of the game board.
  */
 public class Node {
   

@@ -12,7 +12,9 @@ public class Heap {
   private final int maxSize;
 
   /**
-   * Initialize a new Heap with hard coded maximum size.
+   * Initialize a new Heap with hard coded maximum
+   * size. The maximum size of 2000 was decided after
+   * testing the solve speeds with various maximum sizes.
    */
   public Heap() {
     this.size = 0;

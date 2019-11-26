@@ -11,9 +11,12 @@
   - [Viikkoraportti 4](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-4.md)
   - [Viikkoraportti 5](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-5.md)
 
+## Sovelluksen suoritettaminen
+Sovellus kannattaa ajaa NetBeansissä, mutta mikä tahansa keino, joka mahdollistaa tekstikonsolin käyttämisen toimii.
+
 ## Komentorivitoiminnot
 
-JavaDocs, testikattavuusraportti, checkstyleraportti, jar-tiedosto ja testit voidaan generoida ja ajaa suorittamalla reposition juurikansiosta löytyvä shell-skripti `run_commands.sh`.
+JavaDocs, testikattavuusraportti, checkstyleraportti ja testit voidaan generoida ja ajaa suorittamalla reposition juurikansiosta löytyvä shell-skripti `run_commands.sh`.
 
 Yksittäin ajettuna kaikki komentorivikomennot suoritetaan Java-projektin kansiossa.
 
@@ -23,14 +26,6 @@ Testit suoritetaan komennolla `mvn test`.
 Testikattavuusraportti luodaan komennolla `mvn jacoco:report`.
 
 Testikattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*.
-
-### Suoritettava jar-tiedosto
-Suoritettavan jar-tiedoston voi luoda komennolla `mvn package`.
-
-Luodun tiedoston polku on *target/15-puzzle-solver-1.0-SNAPSHOT*.
-
-Sovellus vaatii konsolia tekstin esittämiseen, joten IDE:n
-käyttäminen ohjelman suorittamiseen voi olla helpompi vaihtoehto.
 
 ### JavaDoc
 JavaDoc generoidaan komennolla `mvn javadoc:javadoc`.

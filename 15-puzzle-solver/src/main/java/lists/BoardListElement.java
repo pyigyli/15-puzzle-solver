@@ -5,7 +5,7 @@ package lists;
  */
 public class BoardListElement {
   
-  private final int[][] board;
+  private final int[] board;
   private BoardListElement next;
   
   /**
@@ -13,7 +13,7 @@ public class BoardListElement {
    * 
    * @param board  The game board we want to store in the list.
    */
-  public BoardListElement(int[][] board) {
+  public BoardListElement(int[] board) {
     this.board = board;
     this.next = null;
   }
@@ -23,7 +23,7 @@ public class BoardListElement {
    * 
    * @return  The game board.
    */
-  public int[][] getBoard() {
+  public int[] getBoard() {
     return this.board;
   }
   

@@ -12,35 +12,33 @@ import lists.Heap;
  */
 public class Board {
   
-  private int[][] gameBoard;
+  private int[] gameBoard;
   
   /**
    * Create a new object that handles the logic for the board of
    * the 15-puzzle game and any search algorithms implemented.
    */
   public Board() {
-    this.gameBoard = new int[4][4];
-    for (int y = 0; y < 4; y++) {
-      for (int x = 0; x < 4; x++) {
-        this.gameBoard[x][y] = y * 4 + x + 1;
-      }
+    this.gameBoard = new int[16];
+    for (int i = 0; i < 16; i++) {
+      this.gameBoard[i] = i + 1;
     }
   }
   
   /**
    * Shuffles the board into a random layout. Makes sure that
    * the puzzle is in solvable state, since only half of the
-   * possible 4x4 layouts are solvable due to parity.
+   * possible layouts are solvable due to parity.
    */
   public void shuffleBoard() {
     Random rand = new Random();
     while (true) {
-      int[][] newBoard = new int[4][4];
+      int[] newBoard = new int[16];
       int piece = 1;
       while (piece <= 16) {
         int i = rand.nextInt(16);
-        if (newBoard[i % 4][i / 4] == 0) { // Check if index is still empty
-          newBoard[i % 4][i / 4] = piece;
+        if (newBoard[i] == 0) { // Check if index is still empty
+          newBoard[i] = piece;
           if (piece == 16) { // Last piece has been placed in the board
             this.gameBoard = newBoard;
             if (this.getInversionCount() % 2 != (i / 4) % 2) { // Ensure solvability
@@ -66,9 +64,9 @@ public class Board {
     for (int i = 0; i < 15; i++) { // Smaller piece
       for (int j = i + 1; j < 16; j++) { // Bigger piece
         if (
-          this.gameBoard[i % 4][i / 4] > this.gameBoard[j % 4][j / 4] &&
-          this.gameBoard[i % 4][i / 4] < 16 &&
-          this.gameBoard[j % 4][j / 4] < 16
+          this.gameBoard[i] > this.gameBoard[j] &&
+          this.gameBoard[i] < 16 &&
+          this.gameBoard[j] < 16
         ) {
           inversionCount++;
         }
@@ -99,7 +97,7 @@ public class Board {
           boolean newLayout = true;
           BoardListElement element = closedList.getHead();
           while (element != null) { // Make sure child node isn't already checked layout
-            if (Arrays.deepEquals(element.getBoard(), child.getBoard())) {
+            if (Arrays.equals(element.getBoard(), child.getBoard())) {
               newLayout = false;
               break;
             }
@@ -118,30 +116,28 @@ public class Board {
    * 
    * @param board The new layout of the Board.
    */
-  public void setGameBoard(int[][] board) {
+  public void setGameBoard(int[] board) {
     this.gameBoard = board;
   }
 
   /**
    * Get the game board.
    * 
-   * @return  Two dimensional array containing
-   *          integers that represent the pieces.
+   * @return  Array containing integers that represent the pieces.
    */
-  public int[][] getGameBoard() {
+  public int[] getGameBoard() {
     return this.gameBoard;
   }
 
   /**
    * Get the number of a piece by its location on the board.
    *
-   * @param   x vertical position starting from 0.
-   * @param   y horizontal position starting from 0.
+   * @param   pos Position of the piece.
    * 
    * @return  The number that is positioned in the specified location.
    */
-  public int getPieceNumber(int x, int y) {
-    return this.gameBoard[x][y];
+  public int getPieceNumber(int pos) {
+    return this.gameBoard[pos];
   }
 
   /**
@@ -154,8 +150,8 @@ public class Board {
     String string = "";
     for (int y = 0; y < 4; y++) {
       for (int x = 0; x < 4; x++) {
-        if (this.gameBoard[x][y] != 16) {
-          string += this.gameBoard[x][y];
+        if (this.gameBoard[y * 4 + x] != 16) {
+          string += this.gameBoard[y * 4 + x];
         }
         string += "\t";
       }

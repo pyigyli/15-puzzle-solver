@@ -8,8 +8,8 @@ public class NodeListTest {
 
   @Test
   public void testAddFirstAndPollFirst() {
-    int[][] board1 = new int[][] {{1,5,9,13},{2,6,10,14},{3,7,11,15},{4,8,12,16}};
-    int[][] board2 = new int[][] {{1,5,9,13},{2,6,10,14},{3,7,11,15},{4,8,16,12}};
+    int[] board1 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+    int[] board2 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15};
     NodeList list = new NodeList();
     list.addFirst(new Node(board1, null));
     list.addFirst(new Node(board2, null));
@@ -27,7 +27,7 @@ public class NodeListTest {
   public void testIsEmpty() {
     NodeList list = new NodeList();
     assertEquals(true, list.isEmpty());
-    int[][] board = new int[][] {{1,5,9,13},{2,6,10,14},{3,7,11,15},{4,8,12,16}};
+    int[] board = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     list.addFirst(new Node(board, null));
     assertEquals(false, list.isEmpty());
   }

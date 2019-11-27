@@ -7,9 +7,9 @@ public class BoardListTest {
 
   @Test
   public void testList() {
-    int[][] board1 = new int[][] {{1},{0}};
-    int[][] board2 = new int[][] {{2},{0}};
-    int[][] board3 = new int[][] {{3},{0}};
+    int[] board1 = new int[] {1};
+    int[] board2 = new int[] {2};
+    int[] board3 = new int[] {3};
     BoardList list = new BoardList();
     list.add(board1);
     list.add(board2);

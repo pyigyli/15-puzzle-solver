@@ -21,7 +21,7 @@ public class BoardList {
    * 
    * @param board The game board that will be added.
    */
-  public void add(int[][] board) {
+  public void add(int[] board) {
     BoardListElement newElement = new BoardListElement(board);
     if (this.head == null) {
       this.head = newElement;

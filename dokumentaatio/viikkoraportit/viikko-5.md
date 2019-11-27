@@ -5,5 +5,10 @@ Parantelin hieman dokumentaatiota ja lisäsin enemmän näytettäviä statistiik
 Käytetty aika tiistaina: 1 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 1
+Muutin pelilaudan kaksiulotteisesta listasta yksiulotteiseksi ja refaktoroin koodia sen mukaisesti. Tämä lisäsi koodin selkeyttä ja toi lisää performanssia algoritmiin. Javadocs, jacoco ja checkstyle myös kunnossa.
+
+Käytetty aika keskiviikkona: 3 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 4
 -

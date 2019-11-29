@@ -6,7 +6,7 @@ Aikavaatimus A*-algoritmille on O(b^d), jossa b on haarautumiskerroin ja d ratka
 
 Kuvassa nähtävillä 10000 satunnaisen laudan ratkaisemisesta saadut tilastot.
 
-![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/10000_solve_results.png "Testitulokset koolla 4 10000 satunnaisella pelilaudalla")
+![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/size_4-10000_solves.png "Testitulokset koolla 4 10000 satunnaisella pelilaudalla")
 
 Tilavaatimukset näille kahdelle listalle ovat O(n), jossa toinen on rajoitettu maksimissaan 2000 elementtiin.
 

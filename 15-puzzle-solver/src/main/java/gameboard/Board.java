@@ -8,19 +8,21 @@ import lists.Heap;
 
 /**
  * This class contains the logic for the board of the
- * 15-puzzle game and any search algorithms implemented.
+ * n-puzzle and any search algorithms implemented.
  */
 public class Board {
   
+  private int size;
   private int[] gameBoard;
   
   /**
    * Create a new object that handles the logic for the board of
-   * the 15-puzzle game and any search algorithms implemented.
+   * the n-puzzle game and any search algorithms implemented.
    */
   public Board() {
-    this.gameBoard = new int[16];
-    for (int i = 0; i < 16; i++) {
+    this.size = 4;
+    this.gameBoard = new int[this.size * this.size];
+    for (int i = 0; i < this.size * this.size; i++) {
       this.gameBoard[i] = i + 1;
     }
   }
@@ -33,16 +35,17 @@ public class Board {
   public void shuffleBoard() {
     Random rand = new Random();
     while (true) {
-      int[] newBoard = new int[16];
+      int[] newBoard = new int[this.size * this.size];
       int piece = 1;
-      while (piece <= 16) {
-        int i = rand.nextInt(16);
+      while (piece <= this.size * this.size) {
+        int i = rand.nextInt(this.size * this.size);
         if (newBoard[i] == 0) { // Check if index is still empty
           newBoard[i] = piece;
-          if (piece == 16) { // Last piece has been placed in the board
+          if (piece == this.size * this.size) { // Last piece has been placed in the board
             this.gameBoard = newBoard;
-            if (this.getInversionCount() % 2 != (i / 4) % 2) { // Ensure solvability
-              return;
+            if (this.size % 2 == 1 && this.getInversionCount() % 2 == 0 ||
+                this.size % 2 == 0 && this.getInversionCount() % 2 != (i / this.size) % 2) {
+              return; // Done if the new layout is solvable.
             }
           }
           piece++;
@@ -61,12 +64,12 @@ public class Board {
    */
   public int getInversionCount() {
     int inversionCount = 0;
-    for (int i = 0; i < 15; i++) { // Smaller piece
-      for (int j = i + 1; j < 16; j++) { // Bigger piece
+    for (int i = 0; i < this.size * this.size - 1; i++) { // Smaller piece
+      for (int j = i + 1; j < this.size * this.size; j++) { // Bigger piece
         if (
           this.gameBoard[i] > this.gameBoard[j] &&
-          this.gameBoard[i] < 16 &&
-          this.gameBoard[j] < 16
+          this.gameBoard[i] < this.size * this.size &&
+          this.gameBoard[j] < this.size * this.size
         ) {
           inversionCount++;
         }
@@ -76,7 +79,7 @@ public class Board {
   }
   
   /**
-   * Find the path of nodes that solve the 15-puzzle using A* search
+   * Find the path of nodes that solve the n-puzzle using A* search
    * algorithm. Open list prioritizes nodes with the lowest heuristic value.
    * 
    * @return  The final node of the path of nodes the solution took.
@@ -109,6 +112,25 @@ public class Board {
         }
       }
     }
+  }
+  
+  /**
+   * Set the size of the puzzle.
+   * 
+   * @param size  The new size of the both edges of the board.
+   */
+  public void setSize(int size) {
+    this.size = size;
+  }
+  
+  
+  /**
+   * Get the size of the puzzle.
+   * 
+   * @return  The size of the edges of the board.
+   */
+  public int getSize() {
+    return this.size;
   }
   
   /**
@@ -148,10 +170,10 @@ public class Board {
   @Override
   public String toString() {
     String string = "";
-    for (int y = 0; y < 4; y++) {
-      for (int x = 0; x < 4; x++) {
-        if (this.gameBoard[y * 4 + x] != 16) {
-          string += this.gameBoard[y * 4 + x];
+    for (int y = 0; y < this.size; y++) {
+      for (int x = 0; x < this.size; x++) {
+        if (this.gameBoard[y * this.size + x] != this.size * this.size) {
+          string += this.gameBoard[y * this.size + x];
         }
         string += "\t";
       }

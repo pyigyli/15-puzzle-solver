@@ -1,4 +1,6 @@
-# 15-pelin ratkaisija
+# n-pelin ratkaisija
+
+Sovellus, joka alkoi 15-pelin ratkaisijana, mutta laajentui myöhemmin useamman n\*n kokoisen pelilaudan ratkaisijaksi. Sovellus etsii ratkaisun annetulle n-pelille mahdollisimman nopeasti käyttäen ahnetta A\* algoritmia. Tarkoitettu lähinnä 8-, 16- ja 25-peleille.
 
 ## Dokumentaatio:
 - [Määrittelydokumentti](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/määrittelydokumentti.md)

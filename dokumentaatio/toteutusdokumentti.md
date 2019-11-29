@@ -6,9 +6,11 @@ Aikavaatimus A*-algoritmille on O(b^d), jossa b on haarautumiskerroin ja d ratka
 
 Kuvassa nähtävillä 10000 satunnaisen laudan ratkaisemisesta saadut tilastot.
 
-![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/10000_solve_results.png "Testitulokset 10000 satunnaisella pelilaudalla")
+![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/10000_solve_results.png "Testitulokset koolla 4 10000 satunnaisella pelilaudalla")
 
 Tilavaatimukset näille kahdelle listalle ovat O(n), jossa toinen on rajoitettu maksimissaan 2000 elementtiin.
+
+Myöhemmin sovellusta on laajennettu toimimaan myös muille n-peleille. Algoritmin toiminta on sama, vaikka laudan koko muuttuisi. Tarkoitettu lähinnä 3-, 4- ja 5- kokoisille pelilaudoille.
 
 Mahdollinen heikkous algoritmille on, että kaksi identtistä lautaa on mahdollista lisätä avoimelle listalle. Tämä aiheuttaa hieman turhaa laskentaa, mutta toinen elementti hylätään kuitenkin tarkasteluvaiheessa. Vaihtoehtoinen tapa tämän estämiseksi olisi käydä läpi sekä suljettu että avoin lista, ennen kuin elementtejä lisätään avoimelle listalle. En osaa sanoa parantaisiko tämä edes algoritmin nopeutta ollenkaan, mutta olen ainakin varma, ettei merkittävää parannusta nähtäisi.
 

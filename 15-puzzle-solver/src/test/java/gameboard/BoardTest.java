@@ -8,14 +8,16 @@ public class BoardTest {
   @Test
   public void testShuffleBoard() {
     Board board = new Board();
-    board.shuffleBoard();
-    for (int piece = 1; piece <= 16; piece++) {
-      for (int pos = 0; pos < 16; pos++) {
-        if (piece == board.getPieceNumber(pos)) {
-          break;
-        }
-        if (pos == 16) {
-          fail("Number " + piece + " not found after shuffling the board.");
+    for (int i = 0; i < 100; i++) { // To eliminate random elements, shuffle multiple times
+      board.shuffleBoard();
+      for (int piece = 1; piece <= 16; piece++) {
+        for (int pos = 0; pos < 16; pos++) {
+          if (piece == board.getPieceNumber(pos)) {
+            break;
+          }
+          if (pos == 16) {
+            fail("Number " + piece + " not found after shuffling the board.");
+          }
         }
       }
     }
@@ -33,13 +35,37 @@ public class BoardTest {
   }
 
   @Test(timeout=10000)
-  public void testAStar() {
+  public void testAStarWithSize4() {
     Board board = new Board();
     board.shuffleBoard();
     assertArrayEquals(
       new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16},
       board.aStar().getBoard()
     );
+  }
+
+  @Test(timeout=10000)
+  public void testAStarWithSize5() {
+    Board board = new Board();
+    board.setSize(5);
+    board.shuffleBoard();
+    assertArrayEquals(
+      new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25},
+      board.aStar().getBoard()
+    );
+  }
+
+  @Test
+  public void testSetSize() {
+    Board board = new Board();
+    board.setSize(5);
+    assertEquals(5, board.getSize());
+  }
+
+  @Test
+  public void testGetSize() {
+    Board board = new Board();
+    assertEquals(4, board.getSize());
   }
 
   @Test

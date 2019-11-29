@@ -10,5 +10,10 @@ Muutin pelilaudan kaksiulotteisesta listasta yksiulotteiseksi ja refaktoroin koo
 Käytetty aika keskiviikkona: 3 tuntia
 
 ---
-Käytetty aika yhteensä viikon aikana: 4
+Sovellukseen lisätty mahdollisuus muuttaa pelilaudan kokoa. Vaikka koko voi olla mikä tahansa luku *(joka on yli 2, muulloin sovellus kaatuu)*, tarkoitetut pelilaudan koot ovat 3, 4 ja 5. Javadocs, jacoco ja checkstyle myös kunnossa. Dokumentointia myös parannettu hieman muutosten mukaisesti.
+
+Käytetty aika perjantaina: 5 tuntia
+
+---
+Käytetty aika yhteensä viikon aikana: 9
 -

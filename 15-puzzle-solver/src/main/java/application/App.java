@@ -8,21 +8,36 @@ import lists.NodeList;
 public class App {
 
   public static void main(String[] args) throws InterruptedException {
+    Board board = new Board();
+    menu(board);
+  }
+  
+  static void menu(Board board) throws InterruptedException {
     Scanner input = new Scanner(System.in);
     System.out.println("Enter a number to select an option:");
     System.out.println("\t1. Solve a single board.");
     System.out.println("\t2. Test algorithm with selected amount of randomized boards.");
+    System.out.println("\t3. Change the size of the board. (Current size " + board.getSize() + ")");
     String response = input.nextLine();
-    if (response.equals("1")) {
-      singleSolve();
-    } else if (response.equals("2")) {
-      System.out.println("How many different boards should be solved?");
-      solveTests(input.nextInt());
+    switch (response) {
+      case "1":
+        singleSolve(board);
+        break;
+      case "2":
+        System.out.println("How many different boards should be solved?");
+        solveTests(board, input.nextInt());
+        break;
+      case "3":
+        System.out.println("Select a new size. (3-5 recommended)");
+        board.setSize(input.nextInt());
+        menu(board);
+        break;
+      default:
+        break;
     }
   }
 
-  static void singleSolve() throws InterruptedException {
-    Board board = new Board();
+  static void singleSolve(Board board) throws InterruptedException {
     board.shuffleBoard();
     int starterHeuristic = new Node(board.getGameBoard(), null).getHValue();
     System.out.println("\nStarting the puzzle with board\n" + board.toString());
@@ -54,8 +69,7 @@ public class App {
     }
   }
   
-  static void solveTests(int solveAmount) throws InterruptedException {
-    Board board = new Board();
+  static void solveTests(Board board, int solveAmount) throws InterruptedException {
     double minTime = Double.MAX_VALUE;
     double maxTime = 0;
     double sumTime = 0;

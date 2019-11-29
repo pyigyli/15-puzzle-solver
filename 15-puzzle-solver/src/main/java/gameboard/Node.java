@@ -6,6 +6,7 @@ package gameboard;
  */
 public class Node {
   
+  private final int size;
   private final int[] boardLayout;
   private final Node parent;
   private final Node[] children;
@@ -19,6 +20,7 @@ public class Node {
    * @param parent      The parent node.
    */
   public Node(int[] boardLayout, Node parent) {
+    this.size = (int) Math.sqrt(boardLayout.length);
     this.boardLayout = boardLayout;
     this.parent = parent;
     this.children = new Node[4];
@@ -35,13 +37,13 @@ public class Node {
    */
   public void addChildren() {
     int position = 0;
-    for (int i = 0; i < 16; i++) {
-      if (this.boardLayout[i] == 16) {
+    for (int i = 0; i < this.size * this.size; i++) {
+      if (this.boardLayout[i] == this.size * this.size) {
         position = i;
       }
     }
-    this.children[0] = this.makeChild(position, position - 4);
-    this.children[1] = this.makeChild(position, position + 4);
+    this.children[0] = this.makeChild(position, position - this.size);
+    this.children[1] = this.makeChild(position, position + this.size);
     this.children[2] = this.makeChild(position, position - 1);
     this.children[3] = this.makeChild(position, position + 1);
   }
@@ -57,15 +59,21 @@ public class Node {
    * @return  A new child node for this piece.
    */
   private Node makeChild(int pos, int swapPos) {
-    if (swapPos < 0 || swapPos >= 16) {
+    if (swapPos < 0 || swapPos >= this.size * this.size) {
       return null;
     }
-    if (this.parent != null && this.parent.getBoard()[swapPos] == 16) {
-      return null; // Don't include parent node as a child
+    if (pos % this.size == 0 && swapPos % this.size == this.size - 1) {
+      return null; // Prevent cheating moves
+    }
+    if (swapPos % this.size == 0 && pos % this.size == this.size - 1) {
+      return null; // Prevent cheating moves
+    }
+    if (this.parent != null && this.parent.getBoard()[swapPos] == this.size * this.size) {
+      return null; // Don't include parent node
     }
     int[] childBoard = this.copyBoard();
     childBoard[pos] = childBoard[swapPos];
-    childBoard[swapPos] = 16;
+    childBoard[swapPos] = this.size * this.size;
     return new Node(childBoard, this);
   }
 
@@ -75,8 +83,8 @@ public class Node {
    * @return  Two dimensional array identical to this.boardLayout.
    */
   private int[] copyBoard() {
-    int[] newBoard = new int[16];
-    for (int i = 0; i < 16; i++) {
+    int[] newBoard = new int[this.size * this.size];
+    for (int i = 0; i < this.size * this.size; i++) {
       newBoard[i] = this.boardLayout[i];
     }
     return newBoard;
@@ -90,11 +98,11 @@ public class Node {
    */
   private int getManhattanDistance() {
     int manhattanDistance = 0;
-    for (int piece = 1; piece < 16; piece++) { // Don't include empty piece
-      for (int i = 0; i < 16; i++) {
+    for (int piece = 1; piece < this.size * this.size; piece++) { // Don't include empty piece
+      for (int i = 0; i < this.size * this.size; i++) {
         if (this.boardLayout[i] == piece) {
-          int xDistance = Math.abs((piece - 1) % 4 - i % 4);
-          int yDistance = Math.abs((piece - 1) / 4 - i / 4);
+          int xDistance = Math.abs((piece - 1) % this.size - i % this.size);
+          int yDistance = Math.abs((piece - 1) / this.size - i / this.size);
           manhattanDistance += xDistance + yDistance; // Add Manhattan distance
         }
       }
@@ -112,16 +120,16 @@ public class Node {
    */
   private int getLinearConflictCount() {
     int linearConflicts = 0;
-    for (int i = 0; i < 4; i++) {
-      int[] row = new int[4];
-      int[] column = new int[4];
-      int[] targetRow = new int[4];
-      int[] targetColumn = new int[4];
-      for (int j = 0; j < 4; j++) {
-        row[j] = this.boardLayout[i * 4 + j];
-        column[j] = this.boardLayout[j * 4 + i];
-        targetRow[j] = i * 4 + j + 1;
-        targetColumn[j] = j * 4 + i + 1;
+    for (int i = 0; i < this.size; i++) {
+      int[] row = new int[this.size];
+      int[] column = new int[this.size];
+      int[] targetRow = new int[this.size];
+      int[] targetColumn = new int[this.size];
+      for (int j = 0; j < this.size; j++) {
+        row[j] = this.boardLayout[i * this.size + j];
+        column[j] = this.boardLayout[j * this.size + i];
+        targetRow[j] = i * this.size + j + 1;
+        targetColumn[j] = j * this.size + i + 1;
       }
       if (this.hasLinearConflict(row, targetRow)) {
         linearConflicts++;
@@ -147,8 +155,8 @@ public class Node {
   private boolean hasLinearConflict(int[] line, int[] targetLine) {
     boolean smallPieceFoundAfterBigTarget = false;
     boolean bigPieceFoundBeforeSmallTarget = false;
-    for (int i = 0; i < 4; i++) {
-      for (int j = 0; j < 4; j++) {
+    for (int i = 0; i < this.size; i++) {
+      for (int j = 0; j < this.size; j++) {
         if (line[i] == targetLine[j] && i < j) {
           bigPieceFoundBeforeSmallTarget = true;
         } else if (line[i] == targetLine[j] && i > j) {
@@ -168,7 +176,7 @@ public class Node {
    */
   public boolean isSolved() {
     boolean solved = true;
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < this.size * this.size; i++) {
       if (this.boardLayout[i] != i + 1) {
         solved = false;
       }
@@ -232,10 +240,10 @@ public class Node {
   @Override
   public String toString() {
     String string = "Current depth: " + this.depth + "\n";
-    for (int y = 0; y < 4; y++) {
-      for (int x = 0; x < 4; x++) {
-        if (this.boardLayout[y * 4 + x] != 16) {
-          string += this.boardLayout[y * 4 + x];
+    for (int y = 0; y < this.size; y++) {
+      for (int x = 0; x < this.size; x++) {
+        if (this.boardLayout[y * this.size + x] != this.size * this.size) {
+          string += this.boardLayout[y * this.size + x];
         }
         string += "\t";
       }

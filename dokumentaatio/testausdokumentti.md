@@ -14,7 +14,7 @@ Sovelluksella voi myös ratkaista muita n-pelejä. Alla olevassa kuvassa tulokse
 
 ![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/size_3-10000_solves.png "Testitulokset 10000 satunnaisella pelilaudalla")
 
-Lisäksi alla ratkaisuajat 100 satunnaiselle pelilaudalle, kun laudan koko on 5\*5. Voidaan huomata, että laudan koon kasvattaminen kasvattaa huomattavasti vaadittavaa ratkaisuaikaa.
+Lisäksi alla ratkaisuajat 1000 satunnaiselle pelilaudalle, kun laudan koko on 5\*5. Voidaan huomata, että laudan koon kasvattaminen kasvattaa huomattavasti vaadittavaa ratkaisuaikaa.
 
 ![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/size_5-1000_solves.png "Testitulokset 10000 satunnaisella pelilaudalla")
 

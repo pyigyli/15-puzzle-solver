@@ -21,4 +21,16 @@ public class BoardListTest {
     element = element.getNext();
     assertArrayEquals(board3, element.getBoard());
   }
+
+  @Test
+  public void testContains() {
+    int[] board1 = new int[] {1};
+    int[] board2 = new int[] {2};
+    BoardList list = new BoardList();
+    assertEquals(false, list.contains(board2));
+    list.add(board1);
+    assertEquals(false, list.contains(board2));
+    list.add(board2);
+    assertEquals(true, list.contains(board2));
+  }
 }

@@ -29,7 +29,12 @@ public class App {
         break;
       case "3":
         System.out.println("Select a new size. (3-5 recommended)");
-        board.setSize(input.nextInt());
+        int selection = input.nextInt();
+        while (selection < 3) {
+          System.out.println("Board sizes below 3 will not work. Please give anouther size.");
+          selection = input.nextInt();
+        }
+        board.setSize(selection);
         menu(board);
         break;
       default:
@@ -39,7 +44,7 @@ public class App {
 
   static void singleSolve(Board board) throws InterruptedException {
     board.shuffleBoard();
-    int starterHeuristic = new Node(board.getGameBoard(), null).getHValue();
+    int starterHeuristic = new Node(board.getGameBoard(), null).getHeuristicValue();
     System.out.println("\nStarting the puzzle with board\n" + board.toString());
 
     System.out.println("Solving...");
@@ -47,9 +52,10 @@ public class App {
     Node node = board.aStar();
     double elapsedTime = (System.nanoTime() - startTime) / 1_000_000_000;
 
+    int solutionDepth = node.getDepth();
     System.out.println("Started with heuristic value of " + starterHeuristic);
     System.out.println("Solved in " + String.format("%.3f", elapsedTime) + " seconds.");
-    System.out.println("Found solution has depth " + node.getDepth());
+    System.out.println("Found solution has depth " + solutionDepth);
 
     NodeList solutionNodes = new NodeList();
     while (node != null) {
@@ -61,10 +67,18 @@ public class App {
     Scanner input = new Scanner(System.in);
     String response = input.nextLine();
     if ("y".equalsIgnoreCase(response)) {
+      System.out.println("Do you wanna print everything at once or step-by-step?");
+      System.out.println("\t1. All at once.");
+      System.out.println("\t2. Step-by-step. (Note! This will take " + String.format("%.1f", solutionDepth * 0.3) + " seconds)");
+      int selection = input.nextInt();
+      while (selection != 1 && selection != 2) {
+        selection = input.nextInt();
+      }
+      int sleepTime = selection == 1 ? 0 : 300;
       while (!solutionNodes.isEmpty()) {
         node = solutionNodes.pollFirst();
         System.out.println(node.toString());
-        Thread.sleep(300);
+        Thread.sleep(sleepTime);
       }
     }
   }
@@ -95,7 +109,7 @@ public class App {
     System.out.println("Solving...");
     for (int solveCount = 1; solveCount <= solveAmount; solveCount++) {
       board.shuffleBoard();
-      int starterHeuristic = new Node(board.getGameBoard(), null).getHValue();
+      int starterHeuristic = new Node(board.getGameBoard(), null).getHeuristicValue();
       
       double startTime = System.nanoTime();
       Node node = board.aStar();

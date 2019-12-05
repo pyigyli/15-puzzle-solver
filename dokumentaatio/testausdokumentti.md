@@ -16,6 +16,6 @@ Sovelluksella voi myös ratkaista muita n-pelejä. Alla olevassa kuvassa tulokse
 
 Lisäksi alla ratkaisuajat 100 satunnaiselle pelilaudalle, kun laudan koko on 5\*5. Voidaan huomata, että laudan koon kasvattaminen kasvattaa huomattavasti vaadittavaa ratkaisuaikaa.
 
-![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/size_5-100_solves.png "Testitulokset 10000 satunnaisella pelilaudalla")
+![kuva](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/kuvat/size_5-1000_solves.png "Testitulokset 10000 satunnaisella pelilaudalla")
 
 Algoritmin testauksen lisäksi sovellus sisältää yksikkötestejä, jotka voidaan ajaa konsolikomennolla `mvn test`. Yksikkötesteillä on varmistettu, että algoritmin ja sovelluksen eri osat toimivat. Testit ovat kattavia, mutta pari asiaa vaativat, että käyttäjä tarkistaa niiden toiminnat ajamalla ohjelman. Esimerkiksi `toString()`-metodit ja se, että sekoitettu lauta on todellisesti satunnainen, eivät selviä yksikkötesteistä, vaikka pelilaudan sekoittamista on testattu muuten hyvin. On myös pieni mahdollisuus, että satunnaisuudesta johtuen kaikkia haaroja ei käydä testauksessa läpi. Esimerkiksi jos lauta on liian helppo ratkaista, maksimi listan pituutta ei saavuteta.

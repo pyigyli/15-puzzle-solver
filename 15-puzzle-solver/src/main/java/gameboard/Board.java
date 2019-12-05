@@ -96,19 +96,8 @@ public class Board {
       closedList.add(current.getBoard());
       current.addChildren();
       for (Node child: current.getChildren()) {
-        if (child != null) {
-          boolean newLayout = true;
-          BoardListElement element = closedList.getHead();
-          while (element != null) { // Make sure child node isn't already checked layout
-            if (Arrays.equals(element.getBoard(), child.getBoard())) {
-              newLayout = false;
-              break;
-            }
-            element = element.getNext();
-          }
-          if (newLayout) { // Add to open list if new unchecked board layout
-            openList.add(child);
-          }
+        if (child != null && !closedList.contains(child.getBoard())) {
+          openList.add(child); // Add to open list if new unchecked board layout
         }
       }
     }

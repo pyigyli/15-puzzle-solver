@@ -32,6 +32,35 @@ public class BoardList {
   }
   
   /**
+   * Check if the list contains a given board.
+   * 
+   * @param   board The game board that list will be compared against.
+   * 
+   * @return  Boolean value indicating wether or
+   *          not list contains a given board.
+   */
+  public boolean contains(int[] board) {
+    boolean found = false;
+    BoardListElement element = this.getHead();
+    while (element != null) { // Iterate through the list
+      boolean sameBoard = true;
+      int i = board.length;
+      while (--i >= 0) {
+        if (board[i] != element.getBoard()[i]) {
+          sameBoard = false;
+          break;
+        }
+      }
+      if (sameBoard) {
+        found = true;
+        break;
+      }
+      element = element.getNext();
+    }
+    return found;
+  }
+  
+  /**
    * Returns the head of the list. The whole
    * list can then be iterated through it.
    * 

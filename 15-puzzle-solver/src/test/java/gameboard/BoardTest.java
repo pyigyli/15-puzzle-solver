@@ -34,7 +34,7 @@ public class BoardTest {
     assertEquals(14, board.getInversionCount());
   }
 
-  @Test(timeout=10000)
+  @Test(timeout=60000)
   public void testAStarWithSize4() {
     Board board = new Board();
     board.shuffleBoard();
@@ -44,7 +44,7 @@ public class BoardTest {
     );
   }
 
-  @Test(timeout=10000)
+  @Test(timeout=60000)
   public void testAStarWithSize5() {
     Board board = new Board();
     board.setSize(5);
@@ -92,5 +92,19 @@ public class BoardTest {
     assertEquals(4, board.getPieceNumber(3));
     assertEquals(10, board.getPieceNumber(9));
     assertEquals(16, board.getPieceNumber(15));
+  }
+  
+  @Test
+  public void testToString() {
+    Board board = new Board();
+    assertEquals(
+      "1\t2\t3\t4\t\n5\t6\t7\t8\t\n9\t10\t11\t12\t\n13\t14\t15\t\t\n",
+      board.toString()
+    );
+    board.setGameBoard(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15});
+    assertEquals(
+      "1\t2\t3\t4\t\n5\t6\t7\t8\t\n9\t10\t11\t12\t\n13\t14\t\t15\t\n",
+      board.toString()
+    );
   }
 }

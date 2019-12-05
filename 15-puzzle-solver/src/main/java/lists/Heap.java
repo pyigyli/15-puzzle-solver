@@ -13,12 +13,12 @@ public class Heap {
 
   /**
    * Initialize a new Heap with hard coded maximum
-   * size. The maximum size of 2000 was decided after
+   * size. The maximum size of 1000 was decided after
    * testing the solve speeds with various maximum sizes.
    */
   public Heap() {
     this.size = 0;
-    this.maxSize = 2000;
+    this.maxSize = 1000;
     this.heap = new Node[this.maxSize + 1];
   }
 
@@ -37,7 +37,7 @@ public class Heap {
     int current = this.size; 
     while (
       this.heap[this.getParent(current)] != null &&
-      this.heap[current].getHValue() < this.heap[this.getParent(current)].getHValue()
+      this.heap[current].getHeuristicValue() < this.heap[this.getParent(current)].getHeuristicValue()
     ) {
       this.swap(current, this.getParent(current));
       current = this.getParent(current);
@@ -69,10 +69,10 @@ public class Heap {
         return;
       }
       if (
-        this.heap[pos].getHValue() > leftChild.getHValue() ||
-        this.heap[pos].getHValue() > rightChild.getHValue()
+        this.heap[pos].getHeuristicValue() > leftChild.getHeuristicValue() ||
+        this.heap[pos].getHeuristicValue() > rightChild.getHeuristicValue()
       ) {
-        if (leftChild.getHValue() < rightChild.getHValue()) {
+        if (leftChild.getHeuristicValue() < rightChild.getHeuristicValue()) {
           this.swap(pos, this.getLeftChild(pos));
           this.sortHeap(this.getLeftChild(pos));
         } else {

@@ -77,7 +77,23 @@ public class NodeTest {
     int[] board2 = new int[] {3, 1, 2, 8, 5, 6, 7, 4, 9, 10, 11, 12, 13, 14, 15, 16};
     Node node1 = new Node(board1, null);
     Node node2 = new Node(board2, null);
-    assertEquals(0, node1.getHValue());
-    assertEquals(10, node2.getHValue());
+    assertEquals(0, node1.getHeuristicValue());
+    assertEquals(10, node2.getHeuristicValue());
+  }
+  
+  @Test
+  public void testToString() {
+    int[] board1 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+    int[] board2 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 15};
+    Node node1 = new Node(board1, null);
+    Node node2 = new Node(board2, node1);
+    assertEquals(
+      "Current depth: 0\n1\t2\t3\t4\t\n5\t6\t7\t8\t\n9\t10\t11\t12\t\n13\t14\t15\t\t\n",
+      node1.toString()
+    );
+    assertEquals(
+      "Current depth: 1\n1\t2\t3\t4\t\n5\t6\t7\t8\t\n9\t10\t11\t12\t\n13\t14\t\t15\t\n",
+      node2.toString()
+    );
   }
 }

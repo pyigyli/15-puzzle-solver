@@ -34,8 +34,8 @@ public class NodeListElement {
    * 
    * @return  The heuristic value of the node.
    */
-  public int getHValue() {
-    return this.node.getHValue();
+  public int getHeuristicValue() {
+    return this.node.getHeuristicValue();
   }
   
   /**

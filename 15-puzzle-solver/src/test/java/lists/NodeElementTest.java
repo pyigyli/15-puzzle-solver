@@ -18,7 +18,7 @@ public class NodeElementTest {
   public void testGetHeuristicValue() {
     int[] board = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     NodeListElement element = new NodeListElement(new Node(board, null));
-    assertEquals(0, element.getHValue());
+    assertEquals(0, element.getHeuristicValue());
   }
 
   @Test

@@ -157,10 +157,12 @@ public class Node {
     boolean bigPieceFoundBeforeSmallTarget = false;
     for (int i = 0; i < this.size; i++) {
       for (int j = 0; j < this.size; j++) {
-        if (line[i] == targetLine[j] && i < j) {
-          bigPieceFoundBeforeSmallTarget = true;
-        } else if (line[i] == targetLine[j] && i > j) {
-          smallPieceFoundAfterBigTarget = true;
+        if (line[i] != this.size * this.size && targetLine[j] != this.size * this.size) {
+          if (line[i] == targetLine[j] && i < j) {
+            bigPieceFoundBeforeSmallTarget = true;
+          } else if (line[i] == targetLine[j] && i > j) {
+            smallPieceFoundAfterBigTarget = true;
+          }
         }
       }
     }
@@ -175,13 +177,12 @@ public class Node {
    *          the game board is in a solved state.
    */
   public boolean isSolved() {
-    boolean solved = true;
     for (int i = 0; i < this.size * this.size; i++) {
       if (this.boardLayout[i] != i + 1) {
-        solved = false;
+        return false;
       }
     }
-    return solved;
+    return true;
   }
   
   /**
@@ -228,7 +229,7 @@ public class Node {
    * 
    * @return  The heuristic value of the node.
    */
-  public int getHValue() {
+  public int getHeuristicValue() {
     return this.heuristicValue;
   }
   

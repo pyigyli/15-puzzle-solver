@@ -12,6 +12,8 @@ Sovellus, joka alkoi 15-pelin ratkaisijana, mutta laajentui myöhemmin useamman 
   - [Viikkoraportti 3](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-3.md)
   - [Viikkoraportti 4](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-4.md)
   - [Viikkoraportti 5](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-5.md)
+  - [Viikkoraportti 6](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-6.md)
+  - [Viikkoraportti 7](https://github.com/pyigyli/15-puzzle-solver/blob/master/dokumentaatio/viikkoraportit/viikko-7.md)
 
 ## Sovelluksen suoritettaminen
 Sovellus kannattaa ajaa NetBeansissä, mutta mikä tahansa keino, joka mahdollistaa tekstikonsolin käyttämisen toimii.

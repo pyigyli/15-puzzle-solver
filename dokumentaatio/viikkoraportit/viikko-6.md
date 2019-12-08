@@ -1,4 +1,4 @@
-# Viikkoraportti 5
+# Viikkoraportti 6
 ---
 Tein vähän lisää optimointia/refaktorointia koodin luettavuuden parantamiseksi. Pääsin myös eroon Arrays.util.arrayEquals() riippuvuudesta. Tämän jälkeen kokeilin muita algoritmejä, joita voisin ehkä lisätä ohjelmaan, mutta iteratiivisia algoritmeja ei oikein voi toteuttaa ahneita, sillä liika metodien kutsuminen kaataa ohjelman.
 

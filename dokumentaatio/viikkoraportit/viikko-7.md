@@ -1,4 +1,4 @@
-# Viikkoraportti 5
+# Viikkoraportti 7
 ---
 Ajoin viimeisen algoritmitestin, jotta sain datapisteet algoritmin tehokkuuden graafiseen esitykseen.
 

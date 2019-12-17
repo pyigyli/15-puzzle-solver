@@ -36,11 +36,10 @@ public class BoardList {
    * 
    * @param   board The game board that list will be compared against.
    * 
-   * @return  Boolean value indicating wether or
+   * @return  Boolean value indicating whether or
    *          not list contains a given board.
    */
   public boolean contains(int[] board) {
-    boolean found = false;
     BoardListElement element = this.getHead();
     while (element != null) { // Iterate through the list
       boolean sameBoard = true;
@@ -52,12 +51,11 @@ public class BoardList {
         }
       }
       if (sameBoard) {
-        found = true;
-        break;
+        return true;
       }
       element = element.getNext();
     }
-    return found;
+    return false;
   }
   
   /**

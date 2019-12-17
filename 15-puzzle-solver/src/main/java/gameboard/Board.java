@@ -1,8 +1,6 @@
 package gameboard;
 
-import java.util.Arrays;
 import java.util.Random;
-import lists.BoardListElement;
 import lists.BoardList;
 import lists.Heap;
 
@@ -79,14 +77,14 @@ public class Board {
   }
   
   /**
-   * Find the path of nodes that solve the n-puzzle using A* search
+   * Find the path of nodes that solve the n-puzzle using greedy A* search
    * algorithm. Open list prioritizes nodes with the lowest heuristic value.
    * 
    * @return  The final node of the path of nodes the solution took.
    */
   public Node aStar() {
     BoardList closedList = new BoardList(); // Visited nodes
-    Heap openList = new Heap();
+    Heap openList = new Heap(); // To be visited nodes
     openList.add(new Node(this.gameBoard, null)); // Add root node
     while (true) {
       Node current = openList.pollFirst();

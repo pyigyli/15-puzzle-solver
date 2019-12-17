@@ -32,7 +32,7 @@ public class Node {
    * Adds neighbor nodes to the node by finding the
    * empty piece and swapping it with all adjacent pieces,
    * creating 1-3 new nodes of these new layouts. If
-   * there is no piece in a direction or is is the parent
+   * there is no piece in a direction or is the parent
    * of this node, it will cause that child to stay null.
    */
   public void addChildren() {
@@ -84,9 +84,7 @@ public class Node {
    */
   private int[] copyBoard() {
     int[] newBoard = new int[this.size * this.size];
-    for (int i = 0; i < this.size * this.size; i++) {
-      newBoard[i] = this.boardLayout[i];
-    }
+    System.arraycopy(this.boardLayout, 0, newBoard, 0, this.size * this.size);
     return newBoard;
   }
   
@@ -98,7 +96,7 @@ public class Node {
    */
   private int getManhattanDistance() {
     int manhattanDistance = 0;
-    for (int piece = 1; piece < this.size * this.size; piece++) { // Don't include empty piece
+    for (int piece = 1; piece < this.size * this.size; piece++) {
       for (int i = 0; i < this.size * this.size; i++) {
         if (this.boardLayout[i] == piece) {
           int xDistance = Math.abs((piece - 1) % this.size - i % this.size);
@@ -153,20 +151,20 @@ public class Node {
    * @return  Boolean value that tells if line has a linear conflict.
    */
   private boolean hasLinearConflict(int[] line, int[] targetLine) {
-    boolean smallPieceFoundAfterBigTarget = false;
-    boolean bigPieceFoundBeforeSmallTarget = false;
+    boolean smallPieceAfterBigTarget = false;
+    boolean bigPieceBeforeSmallTarget = false;
     for (int i = 0; i < this.size; i++) {
       for (int j = 0; j < this.size; j++) {
         if (line[i] != this.size * this.size && targetLine[j] != this.size * this.size) {
           if (line[i] == targetLine[j] && i < j) {
-            bigPieceFoundBeforeSmallTarget = true;
+            bigPieceBeforeSmallTarget = true;
           } else if (line[i] == targetLine[j] && i > j) {
-            smallPieceFoundAfterBigTarget = true;
+            smallPieceAfterBigTarget = true;
           }
         }
       }
     }
-    return smallPieceFoundAfterBigTarget && bigPieceFoundBeforeSmallTarget;
+    return smallPieceAfterBigTarget && bigPieceBeforeSmallTarget;
   }
   
   /**

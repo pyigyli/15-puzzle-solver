@@ -18,6 +18,8 @@ Sovellus, joka alkoi 15-pelin ratkaisijana, mutta laajentui myöhemmin useamman 
 ## Sovelluksen suoritettaminen
 Sovellus kannattaa ajaa NetBeansissä, mutta mikä tahansa keino, joka mahdollistaa tekstikonsolin käyttämisen toimii.
 
+Projekti käyttää JDK 8, muut versiot eivät välttämättä toimi täysin. Tässäkin tapauksessa ohjelman ja testien ajaminen Netbeansin kautta voi toimia paremmin.
+
 ## Komentorivitoiminnot
 
 JavaDocs, testikattavuusraportti, checkstyleraportti ja testit voidaan generoida ja ajaa suorittamalla reposition juurikansiosta löytyvä shell-skripti `run_commands.sh`.
